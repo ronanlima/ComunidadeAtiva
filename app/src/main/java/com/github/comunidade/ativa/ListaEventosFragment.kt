@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import com.github.comunidade.ativa.adapter.EventosAdapter
 import com.github.comunidade.ativa.databinding.FragmentListaEventosBinding
 import com.github.comunidade.ativa.repository.ComunidadeRepository
 import com.github.comunidade.ativa.viewmodel.ComunidadeAtivaViewModel
@@ -35,6 +37,9 @@ class ListaEventosFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider(this).get(ComunidadeAtivaViewModel::class.java)
     }
+    private val eventoAdapter by lazy {
+        EventosAdapter()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,12 +60,14 @@ class ListaEventosFragment : Fragment() {
 
         viewModel.eventoObserver.observe(this, Observer { result ->
             result.onSuccess {
+                eventoAdapter.setData(it)
                 it.forEach {
                     it.toJson()?.let { it1 -> Log.i("resultado", it1) }
                 }
             }
         })
-
+        listaEventosBinding.rvEventos.adapter = eventoAdapter
+        listaEventosBinding.rvEventos.layoutManager = GridLayoutManager(requireContext(), 2)
         return listaEventosBinding.root
     }
 

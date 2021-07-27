@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_8dp"
+    android:elevation="@dimen/dimen_2dp"
+    app:cardCornerRadius="@dimen/dimen_8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_evento"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_180dp"
+            android:alpha="0.85"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_evento_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_nome_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_card_evento"
+            android:paddingStart="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_evento"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Nome do Evento" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_itens_acoes_rapidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_evento">
+
+            <ImageView
+                android:id="@+id/iv_check_in"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_36dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="@dimen/dimen_8dp"
+                android:src="@drawable/ic_curtir"
+                app:tint="#ACA9A7" />
+
+            <ImageView
+                android:id="@+id/iv_compartilhar"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_36dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="@dimen/dimen_8dp"
+                android:src="@drawable/ic_compartilhar"
+                app:tint="#ACA9A7" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
