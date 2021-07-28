@@ -9,5 +9,13 @@
         android:id="@+id/listaEventosFragment"
         android:name="com.github.comunidade.ativa.ListaEventosFragment"
         android:label="fragment_lista_eventos"
-        tools:layout="@layout/fragment_lista_eventos" />
+        tools:layout="@layout/fragment_lista_eventos">
+        <action
+            android:id="@+id/action_listaEventosFragment_to_detalheEventoFragment"
+            app:destination="@id/detalheEventoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalheEventoFragment"
+        android:name="com.github.comunidade.ativa.view.DetalheEventoFragment"
+        android:label="DetalheEventoFragment" />
 </navigation>

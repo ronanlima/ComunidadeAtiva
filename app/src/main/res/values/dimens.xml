@@ -11,4 +11,11 @@
     <dimen name="dimen_36dp">36dp</dimen>
     <dimen name="dimen_48dp">48dp</dimen>
     <dimen name="dimen_180dp">180dp</dimen>
+    <dimen name="dimen_220dp">220dp</dimen>
+
+    <dimen name="dimen_16sp">16sp</dimen>
+    <dimen name="dimen_14sp">14sp</dimen>
+    <dimen name="dimen_22sp">22sp</dimen>
+
+    <dimen name="app_bar_layout_elevation">4dp</dimen>
 </resources>

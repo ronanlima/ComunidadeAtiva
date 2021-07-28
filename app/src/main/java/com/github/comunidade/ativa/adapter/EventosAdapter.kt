@@ -12,9 +12,10 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.github.comunidade.ativa.R
+import com.github.comunidade.ativa.interfaces.EventoListener
 import com.github.comunidade.ativa.model.Evento
 
-class EventosAdapter : RecyclerView.Adapter<EventoViewHolder>() {
+class EventosAdapter(var eventoListener: EventoListener) : RecyclerView.Adapter<EventoViewHolder>() {
 
     private var dataSet: List<Evento>? = null
 
@@ -31,6 +32,9 @@ class EventosAdapter : RecyclerView.Adapter<EventoViewHolder>() {
         val evento = dataSet!!.get(position)
         holder.nomeEvento.text = evento.title
 //        holder.imgEvento.background = getAppDrawable(R.drawable.)
+        holder.imgEvento.setOnClickListener {
+            eventoListener.onClick(evento)
+        }
     }
 
     fun getAppDrawable(@DrawableRes idRes: Int, mContext: Context?): Drawable? {

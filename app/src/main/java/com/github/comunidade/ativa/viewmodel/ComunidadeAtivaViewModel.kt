@@ -16,18 +16,18 @@ class ComunidadeAtivaViewModel(application: Application) : AndroidViewModel(appl
         ComunidadeRepository()
     }
 
-    protected fun getContextApplication(): Context? {
-        return getApplication<Application>().applicationContext
-    }
-
     private val eventoResponse = MutableLiveData<Result<List<Evento>>>()
     val eventoObserver: LiveData<Result<List<Evento>>>
         get() = eventoResponse
 
-    fun consultaEventos(context: Context) {
+    open val eventoSelecionadoResponse = MutableLiveData<Evento>()
+    val eventoSelecionadoObserver: LiveData<Evento>
+        get() = eventoSelecionadoResponse
+
+    fun consultaEventos() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val eventos = repository.listaEventos(context)
+                val eventos = repository.listaEventos()
                 eventoResponse.postValue(Result.success(eventos.body().orEmpty()))
             } catch (e: Exception) {
                 eventoResponse.postValue(Result.failure(Throwable(e.message)))

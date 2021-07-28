@@ -1,6 +1,5 @@
 package com.github.comunidade.ativa.repository
 
-import android.content.Context
 import com.github.comunidade.ativa.model.Evento
 import com.github.comunidade.ativa.service.EventoService
 import retrofit2.Response
@@ -11,7 +10,7 @@ class ComunidadeRepository {
     val baseUrl = "http://5f5a8f24d44d640016169133.mockapi.io"
 
     @Throws(Exception::class)
-    suspend fun listaEventos(context: Context): Response<List<Evento>> {
+    suspend fun listaEventos(): Response<List<Evento>> {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(JacksonConverterFactory.create())

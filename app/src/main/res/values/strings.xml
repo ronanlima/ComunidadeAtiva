@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ComunidadeAtiva</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prefixo_quando">Quando: %s</string>
+    <string name="prefixo_quanto_custa">Quanto custa: %s</string>
+
+    <string name="transicao_imagem_evento">capa</string>
+    <string name="descricao_imagem_evento">Imagem do evento</string>
 </resources>
