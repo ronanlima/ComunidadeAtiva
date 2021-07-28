@@ -1,8 +1,9 @@
-package com.github.comunidade.ativa
+package com.github.comunidade.ativa.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.github.comunidade.ativa.R
 import com.github.comunidade.ativa.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

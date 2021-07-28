@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listaEventosFragment"
-        android:name="com.github.comunidade.ativa.ListaEventosFragment"
+        android:name="com.github.comunidade.ativa.view.ListaEventosFragment"
         android:label="fragment_lista_eventos"
         tools:layout="@layout/fragment_lista_eventos">
         <action

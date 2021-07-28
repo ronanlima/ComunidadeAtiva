@@ -5,4 +5,7 @@
 
     <string name="transicao_imagem_evento">capa</string>
     <string name="descricao_imagem_evento">Imagem do evento</string>
+
+    <string name="title_menu_check_in">Confirmar</string>
+    <string name="title_menu_compartilhar">Compartilhar</string>
 </resources>

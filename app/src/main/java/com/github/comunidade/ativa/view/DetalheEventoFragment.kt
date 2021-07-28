@@ -1,21 +1,20 @@
 package com.github.comunidade.ativa.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.comunidade.ativa.R
 import com.github.comunidade.ativa.databinding.FragmentDetalheEventoBinding
 import com.github.comunidade.ativa.extensions.balanceFormatted
+import com.github.comunidade.ativa.model.Evento
 import com.github.comunidade.ativa.viewmodel.ComunidadeAtivaViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetalheEventoFragment : Fragment() {
+class DetalheEventoFragment : BaseFragment() {
     private lateinit var detalheEventoBinding: FragmentDetalheEventoBinding
     private val viewModel by lazy {
         ViewModelProvider(requireActivity()).get(ComunidadeAtivaViewModel::class.java)
@@ -37,6 +36,29 @@ class DetalheEventoFragment : Fragment() {
             }
         })
         return detalheEventoBinding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.check_in -> {
+                Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> {
+                viewModel.eventoSelecionadoResponse.value?.let { onShare(it) }
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun onShare(evento: Evento) {
+        startActivity(createIntentShare(evento))
     }
 
     fun formatarDataDetalhada(data: Date?): String? {

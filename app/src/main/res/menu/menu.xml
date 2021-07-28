@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/check_in"
+        android:enabled="true"
+        android:icon="@drawable/ic_curtir"
+        android:iconTint="@color/white"
+        android:title="@string/title_menu_check_in"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/compartilhar"
+        android:enabled="true"
+        android:icon="@drawable/ic_compartilhar"
+        android:iconTint="@color/white"
+        android:title="@string/title_menu_compartilhar"
+        android:visible="true"
+        app:showAsAction="always" />
+</menu>
