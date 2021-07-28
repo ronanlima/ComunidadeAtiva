@@ -1,9 +1,11 @@
 package com.github.comunidade.ativa
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,7 +16,6 @@ import com.github.comunidade.ativa.adapter.EventosAdapter
 import com.github.comunidade.ativa.databinding.FragmentListaEventosBinding
 import com.github.comunidade.ativa.interfaces.EventoListener
 import com.github.comunidade.ativa.model.Evento
-import com.github.comunidade.ativa.view.DetalheEventoFragment
 import com.github.comunidade.ativa.viewmodel.ComunidadeAtivaViewModel
 
 class ListaEventosFragment : Fragment(), EventoListener {
@@ -59,5 +60,19 @@ class ListaEventosFragment : Fragment(), EventoListener {
     override fun onClick(evento: Evento) {
         viewModel.eventoSelecionadoResponse.postValue(evento)
         findNavController().navigate(R.id.action_listaEventosFragment_to_detalheEventoFragment)
+    }
+
+    override fun onShare(evento: Evento) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "Opa, blz? Venha comigo ao evento " + evento.title + " para aproveitarmos juntos.")
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+    }
+
+    override fun onCheck(evento: Evento) {
+        Toast.makeText(requireContext(), "Agradecemos pela confirmação de presença", Toast.LENGTH_SHORT).show()
     }
 }

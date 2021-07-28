@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.comunidade.ativa.R
 import com.github.comunidade.ativa.interfaces.EventoListener
 import com.github.comunidade.ativa.model.Evento
+import com.squareup.picasso.Picasso
 
-class EventosAdapter(var eventoListener: EventoListener) : RecyclerView.Adapter<EventoViewHolder>() {
+class EventosAdapter(var eventoListener: EventoListener) :
+    RecyclerView.Adapter<EventoViewHolder>() {
 
     private var dataSet: List<Evento>? = null
 
@@ -31,9 +33,28 @@ class EventosAdapter(var eventoListener: EventoListener) : RecyclerView.Adapter<
         }
         val evento = dataSet!!.get(position)
         holder.nomeEvento.text = evento.title
-//        holder.imgEvento.background = getAppDrawable(R.drawable.)
+        evento.image?.let {
+            Picasso.get().load(evento.image).error(R.drawable.img_evento_default)
+                .into(holder.imgEvento)
+        }
+        if (evento.image.isNullOrEmpty()) {
+            Picasso.get().load(R.drawable.img_evento_default).into(holder.imgEvento)
+        }
+        setListeners(holder, evento)
+    }
+
+    private fun setListeners(
+        holder: EventoViewHolder,
+        evento: Evento
+    ) {
         holder.imgEvento.setOnClickListener {
             eventoListener.onClick(evento)
+        }
+        holder.imgCheck.setOnClickListener {
+            eventoListener.onCheck(evento)
+        }
+        holder.imgCompartilhar.setOnClickListener {
+            eventoListener.onShare(evento)
         }
     }
 
@@ -57,10 +78,14 @@ class EventosAdapter(var eventoListener: EventoListener) : RecyclerView.Adapter<
 
 class EventoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var imgEvento: ImageView
+    var imgCheck: ImageView
+    var imgCompartilhar: ImageView
     var nomeEvento: TextView
 
     init {
         imgEvento = itemView.findViewById(R.id.iv_evento)
+        imgCheck = itemView.findViewById(R.id.iv_check_in)
+        imgCompartilhar = itemView.findViewById(R.id.iv_compartilhar)
         nomeEvento = itemView.findViewById(R.id.tv_nome_evento)
     }
 

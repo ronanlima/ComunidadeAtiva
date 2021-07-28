@@ -39,6 +39,8 @@ android {
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
